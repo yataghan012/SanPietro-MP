@@ -8,7 +8,7 @@ export default function ReservasPage() {
       <SubpageHero 
         title="Reserve su Mesa" 
         subtitle="Asegure su lugar. Un proceso de reserva inteligente diseñado para garantizar su experiencia y seguridad."
-        imageSrc="/salon.jpg"
+        imageSrc={`${import.meta.env.BASE_URL}salon.jpg`}
       />
       <VerificationBooking />
       <GiftVouchers />

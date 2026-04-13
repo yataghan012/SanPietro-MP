@@ -2,12 +2,6 @@ import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence, 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LEFT_IMAGES = [
-  `${import.meta.env.BASE_URL}fachada.jpg`, 
-  `${import.meta.env.BASE_URL}salon.jpg`, 
-  `${import.meta.env.BASE_URL}hero-heritage.jpg`
-];
-
 const ButtonInner = () => (
   <>
     {/* Outer Border */}
@@ -38,6 +32,12 @@ export default function Hero() {
   const y = useTransform(scrollY, [0, 1000], [0, 250]);
   const [isAtTop, setIsAtTop] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const LEFT_IMAGES = [
+    `${import.meta.env.BASE_URL}fachada.jpg`, 
+    `${import.meta.env.BASE_URL}salon.jpg`, 
+    `${import.meta.env.BASE_URL}hero-heritage.jpg`
+  ];
 
   const buttonControls = useAnimation();
   const shimmerControls = useAnimation();

@@ -7,7 +7,7 @@ export default function Seguridad() {
       <SubpageHero 
         title="Seguridad Alimentaria" 
         subtitle="Un foso técnico invisible. Tranquilidad absoluta para celíacos con nuestra arquitectura de cocina paralela."
-        imageSrc="/arquitectura.jpg"
+        imageSrc={`${import.meta.env.BASE_URL}arquitectura.jpg`}
       />
       <ParallelKitchen />
     </div>

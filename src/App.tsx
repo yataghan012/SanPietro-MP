@@ -25,6 +25,7 @@ import AdminMenuView from './pages/admin/AdminMenuView';
 import AdminReviewsView from './pages/admin/AdminReviewsView';
 
 export default function App() {
+  console.log('Vite Base URL:', import.meta.env.BASE_URL);
   return (
     <Router basename="/SanPietro-MP">
       <AuthProvider>

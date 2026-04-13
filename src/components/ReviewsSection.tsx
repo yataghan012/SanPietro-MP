@@ -113,7 +113,7 @@ export default function ReviewsSection() {
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-1 bg-warm-gold-500" />
           <div className="absolute inset-0 opacity-5 pointer-events-none" 
-               style={{ backgroundImage: `url(${import.meta.env.BASE_URL}ladrillo.png)`, backgroundSize: 'cover' }} />
+               style={{ backgroundImage: `url("${import.meta.env.BASE_URL}ladrillo.png")`, backgroundSize: 'cover' }} />
 
           {isSubmitted ? (
             <motion.div 

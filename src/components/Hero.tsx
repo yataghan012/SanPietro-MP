@@ -139,7 +139,7 @@ export default function Hero() {
         {/* Process Image Background with Ken Burns Effect */}
         <motion.div 
           className="absolute inset-0 bg-cover bg-center origin-center"
-          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}hero-process.jpg)` }}
+          style={{ backgroundImage: `url("${import.meta.env.BASE_URL}hero-process.jpg")` }}
           animate={{ scale: 1.1 }}
           transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
         />

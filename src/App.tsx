@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import FloatingBookingButton from './components/FloatingBookingButton';
@@ -27,7 +27,7 @@ import AdminReviewsView from './pages/admin/AdminReviewsView';
 export default function App() {
   console.log('Vite Base URL:', import.meta.env.BASE_URL);
   return (
-    <Router basename="/SanPietro-MP">
+    <Router>
       <AuthProvider>
         <ThemeProvider>
           <div className="min-h-screen bg-charcoal-900 relative flex flex-col">

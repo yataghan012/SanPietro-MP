@@ -4,6 +4,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { CalendarDays, Settings, ListTodo, LogOut, Sun, Moon, Utensils, MessageSquare } from 'lucide-react';
 
 export default function AdminLayout() {
+  console.log('Rendering AdminLayout');
   const { user, signOut } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();

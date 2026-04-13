@@ -19,7 +19,7 @@
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
-              l.pathname.slice(0, l.pathname.lastIndexOf('/')) + decoded + l.hash
+              l.pathname.replace(/\/$/, '') + decoded + l.hash
           );
         }
       }(window.location))

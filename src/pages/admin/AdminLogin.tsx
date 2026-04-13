@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Lock, Loader2 } from 'lucide-react';
 
 export default function AdminLogin() {
+  console.log('Rendering AdminLogin');
   const { user } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -8,7 +8,7 @@ export default function MenuPage() {
       <SubpageHero 
         title="Nuestro Menú" 
         subtitle="Una exploración visual de nuestra herencia italiana. Ingredientes nobles y procesos cuidados en cada plato."
-        imageSrc="/cava.jpg"
+        imageSrc={`${import.meta.env.BASE_URL}cava.jpg`}
       />
       <ChefSuggestions />
       <FrictionlessMenu />

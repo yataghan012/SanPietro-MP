@@ -10,7 +10,7 @@ export default function SedesPage() {
       <SubpageHero 
         title="Nuestras Sedes" 
         subtitle="Dos ubicaciones, una misma alma. Descubra el ecosistema San Pietro en General Paz y Cerro de las Rosas."
-        imageSrc="/fachada.jpg"
+        imageSrc={`${import.meta.env.BASE_URL}fachada.jpg`}
       />
       <FullDayEcosystem />
       <Locations />

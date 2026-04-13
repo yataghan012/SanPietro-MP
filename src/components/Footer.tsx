@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <Link to="/">
               <img 
-                src="/logo.png" 
+                src={`${import.meta.env.BASE_URL}logo.png`} 
                 alt="San Pietro Logo" 
                 className="h-16 w-auto object-contain brightness-0 invert opacity-90 object-left" 
                 referrerPolicy="no-referrer"

@@ -14,7 +14,7 @@ const locations = [
       'Lunes: Cerrado'
     ],
     phone: '+54 9 351 123-4567',
-    image: '/fachada.jpg', // Reusing existing image
+    image: `${import.meta.env.BASE_URL}fachada.jpg`, // Reusing existing image
     isMain: true,
   },
   {

@@ -89,7 +89,7 @@ export default function FrictionlessMenu() {
       <div 
         className="absolute inset-0 pointer-events-none" 
         style={{ 
-          backgroundImage: 'url("/ladrillo.png")',
+          backgroundImage: `url(${import.meta.env.BASE_URL}ladrillo.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.85

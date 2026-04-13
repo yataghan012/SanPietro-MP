@@ -26,7 +26,7 @@ import AdminReviewsView from './pages/admin/AdminReviewsView';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/SanPietro-MP">
       <AuthProvider>
         <ThemeProvider>
           <div className="min-h-screen bg-charcoal-900 relative flex flex-col">

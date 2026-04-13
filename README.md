@@ -1,20 +1,36 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# San Pietro - Restaurante Italiano & Bodegón de Elite
 
-# Run and deploy your AI Studio app
+San Pietro es una propuesta gastronómica única en Córdoba, Argentina, que combina la calidez de un bodegón tradicional con la sofisticación de la alta cocina italiana. Ubicado en una casona histórica de Barrio General Paz, nos destacamos por nuestra dedicación a la excelencia y nuestra cocina 100% libre de gluten.
 
-This contains everything you need to run your app locally.
+## Características Principales
 
-View your app in AI Studio: https://ai.studio/apps/cd400d95-c765-4e62-a104-34e65c633cd1
+- **Cocina de Herencia:** Recetas familiares italianas perfeccionadas con técnicas modernas.
+- **100% Sin TACC:** Contamos con una cocina paralela exclusiva para garantizar la seguridad total de nuestros comensales celíacos.
+- **Experiencia Multisensorial:** Ambientes diseñados para cada momento, desde cenas íntimas en nuestra cava hasta almuerzos familiares en el salón principal.
+- **Gestión de Reservas:** Sistema integrado para la gestión de mesas y disponibilidad en tiempo real.
+- **Panel de Administración:** Herramientas avanzadas para la gestión del menú, reseñas y configuración del restaurante.
 
-## Run Locally
+## Tecnologías Utilizadas
 
-**Prerequisites:**  Node.js
+Este proyecto ha sido desarrollado con tecnologías modernas para garantizar un rendimiento óptimo y una experiencia de usuario fluida:
 
+- **Frontend:** React 18 con TypeScript.
+- **Estilizado:** Tailwind CSS para un diseño responsivo y elegante.
+- **Animaciones:** Framer Motion para transiciones suaves y una interfaz dinámica.
+- **Backend & Base de Datos:** Supabase para la gestión de datos en tiempo real y autenticación.
+- **Build Tool:** Vite para un desarrollo y compilación rápidos.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Estructura del Proyecto
+
+- `/src/components`: Componentes reutilizables de la interfaz.
+- `/src/pages`: Vistas principales del sitio y panel de administración.
+- `/src/contexts`: Gestión de estados globales (Autenticación y Temas).
+- `/public`: Activos estáticos e imágenes del restaurante.
+
+## Despliegue
+
+El sitio está configurado para desplegarse automáticamente en GitHub Pages mediante GitHub Actions.
+
+---
+
+© 2026 San Pietro - Córdoba, Argentina. Todos los derechos reservados.

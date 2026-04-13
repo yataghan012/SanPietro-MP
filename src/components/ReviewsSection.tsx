@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, Check, X, Loader2, MessageSquare, Calendar, User, Mail, MapPin } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import ladrilloImg from '../assets/images/ladrillo.png';
 
 interface Sucursal {
   id: string;
@@ -113,7 +114,7 @@ export default function ReviewsSection() {
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-1 bg-warm-gold-500" />
           <div className="absolute inset-0 opacity-5 pointer-events-none" 
-               style={{ backgroundImage: `url("${import.meta.env.BASE_URL}ladrillo.png")`, backgroundSize: 'cover' }} />
+               style={{ backgroundImage: `url(${ladrilloImg})`, backgroundSize: 'cover' }} />
 
           {isSubmitted ? (
             <motion.div 

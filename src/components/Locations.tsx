@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { MapPin, Clock, Phone } from 'lucide-react';
+import fachadaImg from '../assets/images/fachada.jpg';
 
 const locations = [
   {
@@ -14,7 +15,7 @@ const locations = [
       'Lunes: Cerrado'
     ],
     phone: '+54 9 351 123-4567',
-    image: `${import.meta.env.BASE_URL}fachada.jpg`, // Reusing existing image
+    image: fachadaImg, // Reusing existing image
     isMain: true,
   },
   {

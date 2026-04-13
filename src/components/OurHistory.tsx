@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import cavaImg from '../assets/images/cava.jpg';
+import arquitecturaImg from '../assets/images/arquitectura.jpg';
 
 interface FlipImageProps {
   frontSrc: string;
@@ -105,7 +107,7 @@ export default function OurHistory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: "easeOut" }}
-              frontSrc={`${import.meta.env.BASE_URL}cava.jpg`}
+              frontSrc={cavaImg}
               backSrc="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=1000&auto=format&fit=crop"
               alt="La Cava de San Pietro"
               className="absolute top-0 right-0 w-[70%] lg:w-[65%] h-[60%] lg:h-[70%]"
@@ -133,7 +135,7 @@ export default function OurHistory() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              frontSrc={`${import.meta.env.BASE_URL}arquitectura.jpg`}
+              frontSrc={arquitecturaImg}
               backSrc="https://images.unsplash.com/photo-1596683720379-b703ce8f036b?q=80&w=800&auto=format&fit=crop"
               alt="Detalles arquitectónicos de San Pietro"
               className="absolute top-[15%] lg:top-[20%] left-[5%] lg:-left-[5%] w-[35%] lg:w-[30%] h-[25%] lg:h-[30%] z-10"

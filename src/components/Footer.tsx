@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logoImg from '../assets/images/logo.png';
 
 type ModalType = 'privacy' | 'terms' | 'data' | null;
 
@@ -51,7 +52,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6">
             <Link to="/">
               <img 
-                src={`${import.meta.env.BASE_URL}logo.png`} 
+                src={logoImg} 
                 alt="San Pietro Logo" 
                 className="h-16 w-auto object-contain brightness-0 invert opacity-90 object-left" 
                 referrerPolicy="no-referrer"

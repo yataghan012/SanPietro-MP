@@ -1,6 +1,7 @@
 import FrictionlessMenu from '../components/FrictionlessMenu';
 import SubpageHero from '../components/SubpageHero';
 import ChefSuggestions from '../components/ChefSuggestions';
+import cavaImg from '../assets/images/cava.jpg';
 
 export default function MenuPage() {
   return (
@@ -8,7 +9,7 @@ export default function MenuPage() {
       <SubpageHero 
         title="Nuestro Menú" 
         subtitle="Una exploración visual de nuestra herencia italiana. Ingredientes nobles y procesos cuidados en cada plato."
-        imageSrc={`${import.meta.env.BASE_URL}cava.jpg`}
+        imageSrc={cavaImg}
       />
       <ChefSuggestions />
       <FrictionlessMenu />

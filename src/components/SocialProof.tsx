@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ExternalLink, MousePointerClick, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ladrilloImg from '../assets/images/ladrillo.png';
 
 interface Review {
   id: number;
@@ -74,7 +75,7 @@ export default function SocialProof() {
       <div 
         className="absolute inset-0 pointer-events-none" 
         style={{ 
-          backgroundImage: `url("${import.meta.env.BASE_URL}ladrillo.png")`,
+          backgroundImage: `url(${ladrilloImg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.85

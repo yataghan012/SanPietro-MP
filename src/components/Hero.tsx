@@ -1,6 +1,11 @@
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence, useAnimation } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import fachadaImg from '../assets/images/fachada.jpg';
+import salonImg from '../assets/images/salon.jpg';
+import heroHeritageImg from '../assets/images/hero-heritage.jpg';
+import logoImg from '../assets/images/logo.png';
+import heroProcessImg from '../assets/images/hero-process.jpg';
 
 const ButtonInner = () => (
   <>
@@ -34,9 +39,9 @@ export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const LEFT_IMAGES = [
-    `${import.meta.env.BASE_URL}fachada.jpg`, 
-    `${import.meta.env.BASE_URL}salon.jpg`, 
-    `${import.meta.env.BASE_URL}hero-heritage.jpg`
+    fachadaImg, 
+    salonImg, 
+    heroHeritageImg
   ];
 
   const buttonControls = useAnimation();
@@ -79,7 +84,7 @@ export default function Hero() {
           whileHover={{ scale: 1.05, filter: "drop-shadow(0px 0px 10px rgba(212, 175, 55, 0.8))" }}
         >
           <img 
-            src={`${import.meta.env.BASE_URL}logo.png`} 
+            src={logoImg} 
             alt="San Pietro Logo" 
             className="relative h-24 sm:h-20 md:h-24 lg:h-32 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity duration-300" 
             referrerPolicy="no-referrer"
@@ -139,7 +144,7 @@ export default function Hero() {
         {/* Process Image Background with Ken Burns Effect */}
         <motion.div 
           className="absolute inset-0 bg-cover bg-center origin-center"
-          style={{ backgroundImage: `url("${import.meta.env.BASE_URL}hero-process.jpg")` }}
+          style={{ backgroundImage: `url(${heroProcessImg})` }}
           animate={{ scale: 1.1 }}
           transition={{ duration: 15, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
         />

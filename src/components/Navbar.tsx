@@ -96,10 +96,10 @@ export default function Navbar() {
               href="https://instagram.com/sanpietro" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center justify-center px-4 py-3 sm:py-2.5 rounded-full text-warm-gold-400 hover:text-warm-gold-300 hover:bg-white/5 transition-all duration-300"
+              className="flex items-center justify-center pl-2 pr-4 py-1.5 rounded-full text-warm-gold-400 hover:text-warm-gold-300 hover:bg-white/5 transition-all duration-300"
               title="Instagram"
             >
-              <Instagram size={22} />
+              <Instagram size={26} />
             </a>
           </div>
         </motion.nav>

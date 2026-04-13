@@ -21,6 +21,8 @@ import AdminLayout from './pages/admin/AdminLayout';
 import AdminDailyView from './pages/admin/AdminDailyView';
 import AdminConfigView from './pages/admin/AdminConfigView';
 import AdminCalendarView from './pages/admin/AdminCalendarView';
+import AdminMenuView from './pages/admin/AdminMenuView';
+import AdminReviewsView from './pages/admin/AdminReviewsView';
 
 export default function App() {
   return (
@@ -35,6 +37,8 @@ export default function App() {
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<AdminDailyView />} />
+              <Route path="menu" element={<AdminMenuView />} />
+              <Route path="resenas" element={<AdminReviewsView />} />
               <Route path="configuracion" element={<AdminConfigView />} />
               <Route path="calendario" element={<AdminCalendarView />} />
             </Route>

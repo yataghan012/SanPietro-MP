@@ -1,8 +1,7 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
     <title>San Pietro - Córdoba</title>
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
@@ -12,7 +11,6 @@
       // string into just a query string, and then redirects the browser
       // to the new url with only a query string and hash fragment,
       // e.g. http://www.foo.tld/one/two?a=b#c --> http://www.foo.tld/?/one/two&a=b#c
-      // For use with the custom 404.html
       (function(l) {
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
@@ -21,13 +19,20 @@
           window.history.replaceState(null, null,
               l.pathname.slice(0, l.pathname.lastIndexOf('/')) + decoded + l.hash
           );
+        } else {
+          var pathSegmentsToKeep = 0;
+          var l = window.location;
+          l.replace(
+            l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+            l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+            l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+            (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+            l.hash
+          );
         }
       }(window.location))
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

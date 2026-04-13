@@ -1,129 +1,84 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { supabase } from '../lib/supabase';
 
-// Sample data based on the provided San Pietro menu
-const menuCategories = [
-  { id: 'entradas', label: 'Entradas' },
-  { id: 'pastas-cintas', label: 'Pastas Cintas' },
-  { id: 'pastas-rellenas', label: 'Pastas Rellenas' },
-  { id: 'carnes', label: 'Carnes' },
-  { id: 'postres', label: 'Postres' },
-  { id: 'vinos', label: 'Vinos' },
-];
+interface Categoria {
+  id: string;
+  nombre: string;
+  orden: number;
+  activo: boolean;
+}
 
-const menuItems = [
-  {
-    id: 1,
-    category: 'entradas',
-    name: 'Provoleta Asada',
-    description: 'Provoleta asada a la plancha acompañada con champignón rústico y mermelada de tomate artesanal.',
-    price: '19.200',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1625937712144-0c6d7c627700?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 2,
-    category: 'entradas',
-    name: 'Rabas',
-    description: 'Aros de calamar rebozados, acompañado con alioli y gajos de limón.',
-    price: '25.900',
-    isGlutenFree: false,
-    isVegetarian: false,
-    image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 3,
-    category: 'pastas-cintas',
-    name: 'Linguini Vegetarianos',
-    description: 'Salteado con espinaca fresca, concasse de tomate, suave ajo crema y champignones rústicos.',
-    price: '22.300',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1621996311239-531f0b50395d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 4,
-    category: 'pastas-cintas',
-    name: 'Spaguettis a la Carbonara',
-    description: 'Panceta dorada, crema de leche, yema de huevo y queso parmesano.',
-    price: '22.300',
-    isGlutenFree: false,
-    isVegetarian: false,
-    image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 5,
-    category: 'pastas-rellenas',
-    name: 'Ravioles Nonna Olga',
-    description: 'Rellenos de peceto, espinaca y queso parmesano con salsa tuco y suave crema.',
-    price: '25.800',
-    isGlutenFree: true,
-    isVegetarian: false,
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 6,
-    category: 'carnes',
-    name: 'Bife de Chorizo',
-    description: 'Acompañado por papines salteados, morrones, cebolla y cherry con tapenade y salsa criolla cocida.',
-    price: '36.500',
-    isGlutenFree: true,
-    isVegetarian: false,
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 7,
-    category: 'postres',
-    name: 'Tiramisú de la Casa',
-    description: 'Clásico postre italiano con mascarpone, café espresso y cacao amargo.',
-    price: '12.500',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 8,
-    category: 'postres',
-    name: 'Mousse de Chocolate',
-    description: 'Suave mousse de chocolate belga con frutos rojos y crocante de almendras.',
-    price: '11.800',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1602351447937-745cb720612f?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 9,
-    category: 'vinos',
-    name: 'Malbec Reserva',
-    description: 'Vino tinto de cuerpo medio con notas de frutos rojos y vainilla. Selección de la casa.',
-    price: '28.000',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 10,
-    category: 'vinos',
-    name: 'Chardonnay Premium',
-    description: 'Vino blanco fresco con notas cítricas y un toque de roble. Ideal para acompañar pastas blancas.',
-    price: '24.500',
-    isGlutenFree: true,
-    isVegetarian: true,
-    image: 'https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=800&auto=format&fit=crop'
-  },
-];
+interface MenuItem {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  precio: number;
+  categoria_id: string;
+  foto_url: string | null;
+  es_sin_tacc: boolean;
+  es_vegetariano: boolean;
+  activo: boolean;
+  orden: number;
+  sucursal: string;
+}
 
 export default function FrictionlessMenu() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'gf' | 'veg'>('all');
-  const [activeCategory, setActiveCategory] = useState('entradas');
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const [catsResponse, itemsResponse] = await Promise.all([
+          supabase.from('categorias').select('*').eq('activo', true).order('orden'),
+          supabase.from('menu_items').select('*').eq('activo', true).order('orden', { ascending: true })
+        ]);
+        
+        if (catsResponse.error) throw catsResponse.error;
+        if (itemsResponse.error) throw itemsResponse.error;
+        
+        const fetchedCats = catsResponse.data || [];
+        setCategorias(fetchedCats);
+        setMenuItems(itemsResponse.data || []);
+        
+        if (fetchedCats.length > 0 && !activeCategory) {
+          setActiveCategory(fetchedCats[0].id);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+
+    // Set up real-time subscription
+    const channel = supabase
+      .channel('menu_changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'menu_items' }, () => {
+        fetchData();
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'categorias' }, () => {
+        fetchData();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [activeCategory]);
 
   const filteredItems = menuItems.filter(item => {
-    const matchesCategory = item.category === activeCategory;
+    const matchesCategory = item.categoria_id === activeCategory;
     const matchesFilter = 
       activeFilter === 'all' || 
-      (activeFilter === 'gf' && item.isGlutenFree) ||
-      (activeFilter === 'veg' && item.isVegetarian);
+      (activeFilter === 'gf' && item.es_sin_tacc) ||
+      (activeFilter === 'veg' && item.es_vegetariano);
     return matchesCategory && matchesFilter;
   });
 
@@ -202,7 +157,7 @@ export default function FrictionlessMenu() {
           
           {/* Categories Sidebar */}
           <div className="lg:w-1/4 flex flex-row lg:flex-col gap-4 sm:gap-6 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 hide-scrollbar border-b lg:border-b-0 lg:border-r border-charcoal-900/10">
-            {menuCategories.map((category) => (
+            {categorias.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
@@ -212,15 +167,23 @@ export default function FrictionlessMenu() {
                     : 'text-charcoal-900/40 hover:text-charcoal-900/80'
                 }`}
               >
-                {category.label}
+                {category.nombre}
               </button>
             ))}
           </div>
 
           {/* Menu Items List */}
           <div className="lg:w-3/4 min-h-[400px]">
-            <AnimatePresence mode="popLayout">
-              {filteredItems.map((item) => (
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="animate-pulse flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 border-4 border-warm-gold-400/30 border-t-warm-gold-400 rounded-full animate-spin" />
+                  <p className="font-sans text-xs uppercase tracking-widest text-charcoal-900/50">Cargando menú...</p>
+                </div>
+              </div>
+            ) : (
+              <AnimatePresence mode="popLayout">
+                {filteredItems.map((item) => (
                 <motion.div
                   key={item.id}
                   layout
@@ -234,8 +197,8 @@ export default function FrictionlessMenu() {
                     {/* Image */}
                     <div className="w-full h-48 sm:w-32 sm:h-32 flex-shrink-0 overflow-hidden rounded-sm bg-charcoal-900/5">
                       <img 
-                        src={item.image} 
-                        alt={item.name} 
+                        src={item.foto_url || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=800&auto=format&fit=crop'} 
+                        alt={item.nombre} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         referrerPolicy="no-referrer"
                       />
@@ -244,9 +207,9 @@ export default function FrictionlessMenu() {
                     <div className="flex-1">
                       <div className="flex justify-between items-baseline gap-2 sm:gap-4 mb-2 sm:mb-3 flex-wrap sm:flex-nowrap">
                         <h3 className="font-serif text-xl sm:text-2xl text-charcoal-900 flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
-                          {item.name}
+                          {item.nombre}
                           <div className="flex gap-1">
-                            {item.isGlutenFree && (
+                            {item.es_sin_tacc && (
                               <span 
                                 className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-terracotta-500/30 text-terracotta-600"
                                 title="Disponible 100% Sin TACC"
@@ -254,7 +217,7 @@ export default function FrictionlessMenu() {
                                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c0-4-3-8-3-12a5 5 0 0 1 6 0c0 4-3 8-3 12z"/><path d="M12 22V10"/></svg>
                               </span>
                             )}
-                            {item.isVegetarian && (
+                            {item.es_vegetariano && (
                               <span 
                                 className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-green-600/30 text-green-700"
                                 title="Opción Vegetariana"
@@ -265,11 +228,11 @@ export default function FrictionlessMenu() {
                           </div>
                         </h3>
                         <div className="font-sans text-sm tracking-widest text-charcoal-900/60">
-                          ${item.price}
+                          ${item.precio.toLocaleString('es-AR')}
                         </div>
                       </div>
                       <p className="font-sans text-charcoal-900/60 text-sm leading-relaxed max-w-2xl">
-                        {item.description}
+                        {item.descripcion}
                       </p>
                     </div>
                   </div>
@@ -288,6 +251,7 @@ export default function FrictionlessMenu() {
                 </motion.div>
               )}
             </AnimatePresence>
+            )}
           </div>
 
         </div>

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ExternalLink, MousePointerClick } from 'lucide-react';
+import { X, ExternalLink, MousePointerClick, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Review {
   id: number;
@@ -122,6 +123,19 @@ export default function SocialProof() {
             <span className="hidden lg:inline"> • </span>
             Status Elite
           </span>
+
+          <Link 
+            to="/"
+            onClick={() => {
+              setTimeout(() => {
+                const element = document.getElementById('resenas-y-sugerencias');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
+            className="mt-8 px-8 py-3 bg-warm-gold-400 text-charcoal-900 font-serif uppercase tracking-[0.2em] text-[10px] hover:bg-warm-gold-500 transition-all duration-300 font-bold shadow-lg flex items-center gap-2"
+          >
+            <MessageSquare size={14} /> Déjanos tu opinión
+          </Link>
         </motion.div>
 
         {/* Floating Press Cards */}

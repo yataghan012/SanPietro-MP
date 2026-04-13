@@ -119,9 +119,36 @@ export default function VerificationBooking() {
                 Reserva<br/>Verificada
               </h2>
               <div className="w-12 h-[1px] bg-warm-gold-400/30 mx-auto mb-6" />
-              <p className="font-sans text-sm text-sand-100/80 leading-relaxed">
+              <p className="font-sans text-sm text-sand-100/80 leading-relaxed mb-8">
                 Para garantizar la integridad de nuestra cocina 100% libre de gluten, necesitamos conocer la composición exacta de su mesa antes de su llegada.
               </p>
+
+              {/* Payment Methods in one line - Larger and no effects */}
+              <div className="flex flex-wrap justify-center items-center gap-6 border-t border-warm-gold-400/20 pt-8">
+                {/* Visa */}
+                <svg className="h-5 w-auto" viewBox="0 0 48 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <text x="0" y="14" fill="white" style={{ font: 'bold 14px sans-serif' }}>VISA</text>
+                </svg>
+                {/* Mastercard */}
+                <svg className="h-7 w-auto" viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="10" fill="#EB001B" fillOpacity="0.9"/>
+                  <circle cx="22" cy="10" r="10" fill="#F79E1B" fillOpacity="0.9"/>
+                </svg>
+                {/* Amex */}
+                <div className="bg-[#0070d2] text-white font-bold px-2 py-1 rounded-sm text-[10px] tracking-tighter shadow-sm">AMEX</div>
+                {/* Mercado Pago */}
+                <div className="flex items-center gap-1.5">
+                  <div className="w-5 h-5 bg-[#009EE3] rounded-full flex items-center justify-center shadow-sm">
+                    <div className="w-1.5 h-1.5 bg-white rounded-full" />
+                  </div>
+                  <span className="text-white font-bold text-[10px] tracking-tighter">Mercado Pago</span>
+                </div>
+                {/* Cash */}
+                <div className="flex items-center gap-1.5 text-white">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+                  <span className="text-[10px] uppercase tracking-widest font-sans font-bold">Efectivo</span>
+                </div>
+              </div>
             </div>
           </motion.div>
 

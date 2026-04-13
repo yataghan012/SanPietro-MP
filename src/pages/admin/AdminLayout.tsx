@@ -1,7 +1,7 @@
 import { Navigate, Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
-import { CalendarDays, Settings, ListTodo, LogOut, Sun, Moon } from 'lucide-react';
+import { CalendarDays, Settings, ListTodo, LogOut, Sun, Moon, Utensils, MessageSquare } from 'lucide-react';
 
 export default function AdminLayout() {
   const { user, signOut } = useAuth();
@@ -15,6 +15,8 @@ export default function AdminLayout() {
   const navItems = [
     { path: '/admin', label: 'Vista del Día', icon: ListTodo },
     { path: '/admin/calendario', label: 'Calendario', icon: CalendarDays },
+    { path: '/admin/menu', label: 'Menú', icon: Utensils },
+    { path: '/admin/resenas', label: 'Reseñas', icon: MessageSquare },
     { path: '/admin/configuracion', label: 'Configuración', icon: Settings },
   ];
 

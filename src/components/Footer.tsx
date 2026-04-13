@@ -65,17 +65,36 @@ export default function Footer() {
           {/* Contact Column */}
           <div className="flex flex-col gap-4">
             <h4 className="font-serif text-warm-gold-400 text-lg tracking-wider uppercase mb-2">Contacto</h4>
-            <a href="https://maps.google.com/?q=San+Pietro+Viamonte+45+Cordoba" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors group">
-              <MapPin size={18} className="mt-0.5 flex-shrink-0" />
-              <span className="font-sans text-sm">Viamonte 45, General Paz<br/>Córdoba, Argentina</span>
-            </a>
-            <a href="tel:+5493511234567" className="flex items-center gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors">
-              <Phone size={18} className="flex-shrink-0" />
-              <span className="font-sans text-sm">+54 9 351 123-4567</span>
-            </a>
-            <a href="mailto:reservas@sanpietro.com.ar" className="flex items-center gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors">
-              <Mail size={18} className="flex-shrink-0" />
-              <span className="font-sans text-sm">reservas@sanpietro.com.ar</span>
+            
+            {/* General Paz */}
+            <div className="flex flex-col gap-2">
+              <p className="text-terracotta-500 font-bold uppercase tracking-widest text-[10px]">General Paz</p>
+              <a href="https://maps.google.com/?q=San+Pietro+Viamonte+45+Cordoba" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors group">
+                <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                <span className="font-sans text-xs leading-tight">Viamonte 45, Córdoba</span>
+              </a>
+              <a href="tel:+5493511234567" className="flex items-center gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors">
+                <Phone size={16} className="flex-shrink-0" />
+                <span className="font-sans text-xs">+54 9 351 123-4567</span>
+              </a>
+            </div>
+
+            {/* Cerro */}
+            <div className="flex flex-col gap-2 mt-2">
+              <p className="text-terracotta-500 font-bold uppercase tracking-widest text-[10px]">Cerro de las Rosas</p>
+              <a href="https://maps.google.com/?q=San+Pietro+Av+Rafael+Nunez+4005+Cordoba" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors group">
+                <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                <span className="font-sans text-xs leading-tight">Av. Rafael Núñez 4005</span>
+              </a>
+              <a href="tel:+5493517654321" className="flex items-center gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors">
+                <Phone size={16} className="flex-shrink-0" />
+                <span className="font-sans text-xs">+54 9 351 765-4321</span>
+              </a>
+            </div>
+
+            <a href="mailto:reservas@sanpietro.com.ar" className="flex items-center gap-3 text-sand-100/70 hover:text-warm-gold-400 transition-colors mt-2">
+              <Mail size={16} className="flex-shrink-0" />
+              <span className="font-sans text-xs">reservas@sanpietro.com.ar</span>
             </a>
           </div>
 
@@ -108,12 +127,24 @@ export default function Footer() {
               </a>
             </div>
             <div className="flex flex-col gap-2 items-start">
+              <Link to="/" onClick={() => {
+                setTimeout(() => {
+                  const element = document.getElementById('nuestra-filosofia');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Quiénes Somos</Link>
               <Link to="/sedes" onClick={() => {
                 setTimeout(() => {
                   const element = document.getElementById('trabaja-con-nosotros');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
               }} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Trabaja con Nosotros</Link>
+              <Link to="/" onClick={() => {
+                setTimeout(() => {
+                  const element = document.getElementById('resenas-y-sugerencias');
+                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Déjanos tu Reseña</Link>
               <button onClick={() => setActiveModal('privacy')} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Política de Privacidad</button>
               <button onClick={() => setActiveModal('terms')} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Términos de Servicio</button>
               <button onClick={() => setActiveModal('data')} className="font-sans text-xs text-sand-100/50 hover:text-warm-gold-400 transition-colors underline underline-offset-4 decoration-sand-100/20">Protocolo de Datos</button>

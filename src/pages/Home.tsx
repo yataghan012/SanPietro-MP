@@ -2,6 +2,7 @@ import Hero from '../components/Hero';
 import OurHistory from '../components/OurHistory';
 import Novedades from '../components/Novedades';
 import SocialProof from '../components/SocialProof';
+import ReviewsSection from '../components/ReviewsSection';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <OurHistory />
       <Novedades />
       <SocialProof />
+      <ReviewsSection />
     </div>
   );
 }
